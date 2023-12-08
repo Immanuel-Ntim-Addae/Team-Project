@@ -1,5 +1,5 @@
 # Project Dangerous Weather
-Have you ever been interested in 
+A Python Project that allows you to travel safe...or take a ride on the wild side. 
 ## Team-Members
 Immanuel Ntim-Addae
 

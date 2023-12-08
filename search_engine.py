@@ -27,29 +27,39 @@ def search_by_csv(crime_index="",safety_score="",precip="",zone="",temp_f="",tem
 
         for row in reader:
             #passon_row,category_crime = crime_indexed(crime_index,row)
-            passon_row, category_safety = safety_indexed(safety_score,row)
-            passon_row,category_precip = precipitation_index(precip,passon_row)
+            row, category_safety = safety_indexed(safety_score,row)
+            row,category_precip = precipitation_index(precip,row)
             #everything from zone onwards has an issue.
-            passon_row, category_zone = zoned(zone,passon_row)
-            passon_row, category_fah = fahrenheit_index(temp_f,passon_row)
-            passon_row, category_cel = celsius_index(temp_c,passon_row)
+            row, category_zone = zoned(zone,row)
+            row, category_fah = fahrenheit_index(temp_f,row)
+            row, category_cel = celsius_index(temp_c,row)
 
-            if passon_row != 'fail':
-                filter_results.append(passon_row)
-    return filter_results
+            if row != 'fail':
+                filter_results.append(row)
+
+    if len(filter_results)>5:
+        return filter_results[0:5]
+    if len(filter_results)<5:
+        return filter_results
+    if filter_results == []:
+        return "Sorry, no data for your query is found. Please try again."
+   
             
 # q = search_by_csv(safety_score="Safe",zone = "Temperate")
 
-def top_five(safety_score="",precip="",zone="",temp_f="",temp_c=""):
-    """Takes a list, sorts them, and returns the top five elements in the list."""
-    results = search_by_csv(safety_score,precip,zone, temp_f, temp_c)
-    sorted_list = sorted(results, key=lambda x: x[2], reverse=True)
-    if len(results) >5:
-        return sorted_list [0:5]
-    else:
-        return results
-    
+# def top_five(safety_score="",precip="",zone="",temp_f="",temp_c=""):
+#     """Takes a list, sorts them, and returns the top five elements in the list."""
+#     results = search_by_csv(safety_score,precip,zone, temp_f, temp_c)
+#     sorted_list = sorted(results, key=lambda x: x[2], reverse=True)
+#     if len(results) >5:
+#         return sorted_list [0:5]
+#     if len(results)<5:
+#         return results 
+#     if results == "[]":
+#         return "Sorry, we don't have what you're looking for!"
 
+    
+    
 
 
 

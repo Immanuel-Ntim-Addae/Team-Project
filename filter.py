@@ -64,7 +64,7 @@ def precipitation_index(target_precip_index,row):
         if value < 600 and target_precip_index == "Low Rainfall Region": 
             return row, "Low Rainfall Region"
         if 600< value <900 and target_precip_index == "Low Moderate Rainfall Region":
-            return row, "Moderate Rainfall Region"
+            return row, "Low Moderate Rainfall Region"
         if 900 < value <1600 and target_precip_index =="High Moderate Rainfall Region":
             return row, "High Moderate Rainfall Region"
         if value > 1600 and target_precip_index == "High Rainfall Region":

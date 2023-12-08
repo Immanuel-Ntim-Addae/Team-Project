@@ -13,6 +13,7 @@ My first instinct was to attempt to find an API where I could simply grab the in
 
 # Implementation
 ![System Flow Diagram](./dangerous_weather_flow.png)
+
 ## CSV DEVELOPMENT
 My new implementation idea (which became the final implementation method) now involved making my own database, saved as a csv, and navigating it to find matches. But how was I going to get the data? Enter Web Scraping.
 Web Scraping is a method by which programmers can get raw data from a website. Using this raw data, they can “scrape” the site to get important information. Web Scraping was perfect for my project, as it allows me to choose any data source with a publicly accessible table of results on their webpage. For this project, I decided to scrape the following websites: 
@@ -38,4 +39,10 @@ I then turned my attention to my API. One issue I had, like my csv creation issu
 I then created two modules to deal with search functionality. This section took time, but I began to understand how to make such a search filter. I focused on using categorical variables as search options, not to dissuade users. This part of the process took a lot of trouble shooting. 
 ## USER INTERFACE
 By the time I had to create the User Interface, I was running out of time. First, I had another exam I had not started studying for. Second, if I dedicated any more time to this project within the next two days, I would have lost my mind. I decided I needed to couch this Project and work on other aspects of my academics. Therefore, I quickly developed a small program that takes user input. It is, admittedly, very rigid and flawed. Output is not pretty, and this is a slightly disappointing result for all my hard work. 
+
+By Country
+![Search By Country Results](./dw_success_example_snippet..png)
+
+By Filter
+![Search by Filter](./dw_success_example_snippet_filter.png)
 

@@ -2,7 +2,7 @@
 
 ### The Big Idea
 **‘Project Dangerous Weather’** is a programming project that aspires to create a travel web application that will allow the user to get travel suggestions based upon their preferred weather conditions, the distance they are willing to travel, and the safety of the location. 
-For this project, the Minimum Viable Product is creating a web application that generates five suggestions based upon weather and a “safety score”. It will rank them by safety score, from highest to lowest. 
+For this project, the Minimum Viable Product is creating an application that generates five suggestions based upon weather and a “safety score”. It will rank them by safety score, from highest to lowest. 
 **My stretch goals** are the following:
 -	Aesthetically Pleasing Interface with interesting text
 -	Providing distance of user from Major Cities that fit their query. 

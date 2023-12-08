@@ -11,7 +11,7 @@ def search_by_location(location = str):
     latitude = get_weather_data(location)[0] #returns (lat,long,temp, precip)
     longitude = get_weather_data(location)[1]
     overall_safety = get_safety_score(latitude,longitude)
-    return f"{location},{full_weather_data},With a Safety Score of: {overall_safety}"
+    return location,full_weather_data, overall_safety
 
 def search_by_csv(crime_index="",safety_score="",precip="",zone="",temp_f="",temp_c=""):
     """
@@ -38,6 +38,17 @@ def search_by_csv(crime_index="",safety_score="",precip="",zone="",temp_f="",tem
                 filter_results.append(passon_row)
     return filter_results
             
+# q = search_by_csv(safety_score="Safe",zone = "Temperate")
+
+def top_five(safety_score="",precip="",zone="",temp_f="",temp_c=""):
+    """Takes a list, sorts them, and returns the top five elements in the list."""
+    results = search_by_csv(safety_score,precip,zone, temp_f, temp_c)
+    sorted_list = sorted(results, key=lambda x: x[2], reverse=True)
+    if len(results) >5:
+        return sorted_list [0:5]
+    else:
+        return results
+    
 
 
 

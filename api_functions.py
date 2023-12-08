@@ -46,6 +46,15 @@ def get_safety_score(lat,long):
         Returns safety information for a location in Barcelona based on geolocation coordinates
         '''
         response = amadeus.safety.safety_rated_locations.get(latitude = lat, longitude = long )
-        return response.data[0]['safetyScores']['overall']
+        test = type(response.data)
+        if test != type(None):
+            return response.data[0]['safetyScores']['overall']
+        else:
+             return "Check Country Score"
     except ResponseError as error:
         raise error
+q = get_weather_data("Rome")
+print(q)
+a,b = q[0],q[1] 
+print(get_safety_score(a,b))
+

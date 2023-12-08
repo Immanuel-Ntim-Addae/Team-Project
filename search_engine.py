@@ -1,6 +1,5 @@
 #import crackpot coding
-from weather_api_tests import get_weather_data
-from amadeus_test import get_safety_score
+from api_functions import get_weather_data, get_safety_score
 import csv
 from filter import crime_indexed,safety_indexed,precipitation_index,zoned,fahrenheit_index,celsius_index
 
@@ -14,11 +13,9 @@ def search_by_location(location = str):
     overall_safety = get_safety_score(latitude,longitude)
     return f"{location},{full_weather_data},With a Safety Score of: {overall_safety}"
 
-#print(search_by_location('New York'))
-
 def search_by_csv(crime_index="",safety_score="",precip="",zone="",temp_f="",temp_c=""):
     """
-    Takes a users categorical input for the values Crime Index, Safety Score, Annual Rainfall, Climate Zone, Temperature (F), Temperature (C)
+    Takes a users categorical input for the values Crime Index, Safety Score, Annual Rainfall, Climate Zone, Temperature (F), Temperature (C), and filters the data for these values. 
     """
     
     filter_results = []
@@ -41,7 +38,7 @@ def search_by_csv(crime_index="",safety_score="",precip="",zone="",temp_f="",tem
                 filter_results.append(passon_row)
     return filter_results
             
-print(search_by_csv(safety_score="Safe",precip="High Moderate Rainfall Region"))
+
 
 
 

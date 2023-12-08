@@ -104,7 +104,6 @@ def precipitation_dict(html):
         country_name = country_name.lower()
         
         #Make Country Names the Same as Country Names in Temperature Data for use in merging data sets.
-        #Experiment with this as a function to reduce the clunkiness of the code. 
         if country_name == "são tomé and príncipe":
             country_name = "sao tome and principe"
         if country_name == "congo":
@@ -113,10 +112,6 @@ def precipitation_dict(html):
             country_name = "democratic republic of the congo"
         if country_name == "east timor":
             country_name = "timor-leste"
-        # if country_name == "ivory coast": #this is where your changes stopped.
-        #     country_name = "cote d'ivoire"
-        #if country_name == "bahamas":
-            #country_name = "the bahamas"
         if country_name == "gambia":
             country_name = "the gambia"
 
@@ -129,26 +124,13 @@ def precipitation_dict(html):
             annual_precipitation = str(annual_precipitation)
             annual_precipitation = annual_precipitation.replace(',','')
             annual_precipitation = int(annual_precipitation)
-        except IndexError as e: #Index Error Arises due to value 'mm' being accepte as a country variable. And the website has something weird going on with Tuvula
+        except IndexError as e: #Index Error Arises due to value 'mm' being accepted as a country variable
             annual_precipitation = '3200'
 
         precipitation_data[country_name] = [annual_precipitation]
     return precipitation_data
 
 
-def merge_data_set():
-    """
-    This module merges data from the dictionaries precipitation dict and temperature dict to create one large dictionary, containing (for every country) the Annual Precipitation, the Climate Zone, the Temperature in Farenheit and Temperature in Celsius. 
-    """
-    precipitation_web_page = download_precipitation(DOWNLOAD_URL_2).read()
-    precip_dict = precipitation_dict(precipitation_web_page)
-    temperature_web_page = download_temperature_page(DOWNLOAD_URL).read()
-    temp_dict = temperature_dict(temperature_web_page)
-
-    for key in precip_dict:
-        precip_dict[key].append([temp_dict[key]]) #error due to spelling of Sao Tome. Use exception?
-    climate_data = precip_dict
-    return climate_data
     
 
 

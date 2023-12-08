@@ -1,5 +1,4 @@
-#This file will act as the main filter for all elements in search engine.py
-#Filters for the following: Crime Index, Safety Score, Precipitation, Zone, Temp_F, Temp_C.
+#This acts as the primary way I filter through the data in order to provide complete travel suggestions based upon country. 
 
 def crime_indexed(target_crime_index=str, row = list):
     """
@@ -25,8 +24,6 @@ def crime_indexed(target_crime_index=str, row = list):
             return row, "Very High"
         else:
             return 'fail','fail'
-
-print(crime_indexed("Very Low",["0","3","80"]))
 
 def safety_indexed(target_crime_index, row):
     """
@@ -106,7 +103,7 @@ def zoned(target_zone,row):
 
 def fahrenheit_index(target_fah_index,row):
     """
-    For a given target 
+    For a given target temperature, provide a 
     """
     if target_fah_index == "":
         return row, "move"
@@ -148,6 +145,5 @@ def celsius_index(target_celsius_index,row):
         else:
             return 'fail','fail'
 
-#print(fahrenheit_index("Low Moderate Temperature Regio",['Pixar','12','45','89','78','56','12']))
-#print(zone('Polar',['America','45','56',90,'BWH'])) #returns none if the conditions don't pan out.
+
     

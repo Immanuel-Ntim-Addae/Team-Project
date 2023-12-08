@@ -37,23 +37,17 @@ def merge_data_set():
     climate_dict = safety_dict 
     return climate_dict
 
-#Error Notation
-# US Virgin Islands not present.
-# kosovo is not part of native data set.
-# serbia not part of native data set.
-# montenegro not part of native set.
-# monaco not part of native set
-# hong kong not part of native set
-# taiwan not part of native set.
-# isle of man 
-#taiwan error
-
 def convert_to_csv():
-     
+    """
+    This function takes the data from the merge_data_set function and converts it into a csv.
+    """
+    #Assigning merge_data_set to climate data for easy use.
     climate_data = merge_data_set()
 
+    #Creating Column Headers for CSV File.
     climate_list = [['Country','Crime Index','Safety Score', 'Annual Rainfall (mm)','Climate Zone','Temperature (F)','Temperature (C)',]]
-
+    
+    #Adding each row in merge_data_set to the CSV File.
     for key in climate_data:
         crime_index = climate_data[key][0]
         safety = climate_data[key][1]

@@ -3,7 +3,6 @@ import urllib.request
 import datetime
 from bs4 import BeautifulSoup
 
-
 today = datetime.date.today()
 
 year = today.year

@@ -3,20 +3,9 @@ import json
 import requests
 import pprint
 import datetime
+from amadeus import ResponseError, Client
 
 APIKEY = "9X6WQPZFQQMGJY7BNL8JVF8AD"
-# location ="Atlanta"
-# date1 = "2023-11-17" #Dates should be in the format yyyy-MM-dd Note: When Only entering date 1, gives you weather deatils for that day alone. 
-# date2 = "" #
-# URL = f"https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/{location}/{date1}/{date2}?key={APIKEY}"
-# with urllib.request.urlopen(URL) as f:
-#         response_text = f.read().decode('utf-8')
-#         response_data = json.loads(response_text)
-        
-#pprint.pprint(response_data)
-
-#Maybe use this to get some lattitude and longitude variables.
-
 def get_weather_data(location =str):
         """
         For a given location, retrieves latitude and longitude, precipitation, and temperature data (fahrenheit and celsius)
@@ -43,4 +32,20 @@ def get_weather_data(location =str):
 
         return lat,long,temperature,precipitation
                 
+def get_safety_score(lat,long):
+    """
+    For a given latitude and longitude value, return the overall safety score of a lat,long pair.
+    """
+    amadeus = Client(
+    client_id='u7CW0MiGzYOXiiikD9q6VXaGkfB3KKnY',
+    client_secret='NEuOMTpe0o7jL2CD'
+    )
 
+    try:
+        '''
+        Returns safety information for a location in Barcelona based on geolocation coordinates
+        '''
+        response = amadeus.safety.safety_rated_locations.get(latitude = lat, longitude = long )
+        return response.data[0]['safetyScores']['overall']
+    except ResponseError as error:
+        raise error
